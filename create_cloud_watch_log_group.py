@@ -22,7 +22,7 @@ res = log_client.create_log_group(
 
 print(json.dumps(res, indent=4))
 
-response = client.put_retention_policy(
+response = log_client.put_retention_policy(
           logGroupName=group_name,
           retentionInDays=retention_period_in_days
 )
@@ -32,7 +32,7 @@ print(json.dumps(response, indent=4))
 #This configration will use for Frontend Log Group.
 
 log_grp = input("Enter the name for  Front group: ")
-response = client.create_log_group(
+response = log_client.create_log_group(
     logGroupName=log_grp,
     tags={
         'Type': 'Front_end',
@@ -42,8 +42,10 @@ response = client.create_log_group(
     }
 )
 
-res = client.put_retention_policy(
+res = log_client.put_retention_policy(
           logGroupName=log_grp,
           retentionInDays=retention_period_in_days
 )
+
 print(json.dumps(res, indent=4))
+
